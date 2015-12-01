@@ -1,0 +1,95 @@
+{
+	"always_show_minimap_viewport": false,
+	"ancestor_gutter": true,
+	"auto_complete_commit_on_tab": true,
+	"auto_complete_selector": "source, text",
+	"binary_file_patterns":
+	[
+		".svn",
+		".git",
+		".hg",
+		"CVS",
+		"cache",
+		"node_modules",
+		"bower_components",
+		".sass-cache",
+		"*.min.*",
+		"*.min.*",
+		"*.min.*",
+		"*.min.*"
+	],
+	"bold_folder_labels": true,
+	"color_scheme": "Packages/User/SublimeLinter/fox.dark (SL).tmTheme",
+	"copy_with_empty_selection": true,
+	"draw_white_space": "all",
+	"ensure_newline_at_eof_on_save": true,
+	"file_exclude_patterns":
+	[
+		"*.min.*"
+	],
+	"find_selected_text": true,
+	"folder_exclude_patterns":
+	[
+		".svn",
+		".git",
+		".hg",
+		"CVS",
+		"cache",
+		"node_modules",
+		"bower_components",
+		".sass-cache",
+		"*.min.*",
+		"*.map*"
+	],
+	"font_face": "Menlo",
+	"font_options":
+	[
+		"subpixel_antialias"
+	],
+	"font_size": 12,
+	"highlight_modified_tabs": true,
+	"hot_exit": true,
+	"ignored_packages":
+	[
+		"Markdown",
+		"Vintage"
+	],
+	"index_exclude_patterns":
+	[
+		".svn",
+		".git",
+		".hg",
+		"CVS",
+		"cache",
+		"node_modules",
+		"bower_components",
+		".sass-cache",
+		"*.min.*",
+		"*.map*"
+	],
+	"line_padding_bottom": 0,
+	"line_padding_top": 0,
+	"live_matching": true,
+	"matching_scope": "invalid",
+	"open_files_in_new_window": true,
+	"ours_gutter": true,
+	"overlay_scroll_bars": "enabled",
+	"remember_full_screen": true,
+	"rulers":
+	[
+		80
+	],
+	"scroll_past_end": true,
+	"shift_tab_unindent": true,
+	"show_line_endings": true,
+	"show_minimap": false,
+	"show_only_filename": true,
+	"spell_check": true,
+	"tab_size": 2,
+	"theirs_gutter": true,
+	"theme": "Fox.sublime-theme",
+	"trim_trailing_white_space_on_save": true,
+	"use_simple_full_screen": true,
+	"vintage_lines.force_mode": true,
+	"vintage_start_in_command_mode": true
+}
