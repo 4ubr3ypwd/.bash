@@ -59,7 +59,7 @@ function cb {
  # E.g: edit-snippets
  ##
 function edit-snippets {
-	subl "/Users/aubreypwd/Library/Application Support/Sublime Text 3/Packages/User/Snippets"
+	subl "~/Library/Application Support/Sublime Text 3/Packages/User/Snippets"
 }
 
 ###
@@ -75,7 +75,8 @@ function delete-branch {
  # E.g: deploy plugin_file_with_header.php aubreypwd false
  ##
 function deploy {
-	wget https://raw.githubusercontent.com/aubreypwd/deploy-git-wordpress-org/master/deploy-git-wordpress-org.sh && sh deploy-git-wordpress-org.sh $1 $2 $3 && rm deploy-git-wordpress-org.sh
+	wget https://raw.githubusercontent.com/aubreypwd/deploy-git-wordpress-org/master/deploy-git-wordpress-org.sh && sh deploy-git-wordpress-org.sh $1 $2 $3
+	rm deploy-git-wordpress-org.sh
 }
 
 ###
@@ -120,9 +121,10 @@ function git-put {
 
 ###
  # Pushes the current branch.
+ # E.g.: git-push
  ##
 function git-push {
-	git push origin $(git branch|grep '*'|tr -d '* \n'|pbcopy)
+	git push origin head
 }
 function push {
 	git-push
