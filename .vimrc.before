@@ -1,0 +1,20 @@
+" Comma is better.
+let mapleader=","
+
+" Powerline.
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+set guifont=Menlo\ for\ Powerline
+
+" Map commenter to a leader command (because Command + \ fails).
+map <Leader>/ <plug>NERDCommenterComment
+
+" Paste mode
+nnoremap <Leader>p :set invpaste paste?<CR>
+set pastetoggle=<Leader>p
+set showmode
+
+" Better Escape
+vno v <esc>
+ino ii <esc>
+cno ii <c-c>
