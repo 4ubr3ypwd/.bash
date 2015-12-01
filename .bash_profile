@@ -124,7 +124,7 @@ function git-put {
  # E.g.: git-push
  ##
 function git-push {
-	git push origin head
+	git push origin $(git branch|grep '*'|tr -d '* \n')
 }
 function push {
 	git-push
@@ -160,6 +160,18 @@ function git-patch {
  ##
 function git-update {
 	git checkout $2 && git pull origin $2 && git checkout $1 && git merge $2
+}
+
+###
+ # Pulls down the current branch.
+ # E.g.: git-pull | pull
+ ##
+function git-pull {
+	git pull origin $(git branch|grep '*'|tr -d '* \n')
+}
+
+function pull {
+	git-pull
 }
 
 ###
