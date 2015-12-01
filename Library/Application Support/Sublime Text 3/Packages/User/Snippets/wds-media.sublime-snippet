@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[
+@media ($1-width: map-get(${2:\$breakpoints}, ) ${3:\$screen-size}) {
+	$4
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>@media</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

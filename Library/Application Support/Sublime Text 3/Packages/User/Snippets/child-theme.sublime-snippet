@@ -1,0 +1,21 @@
+<snippet>
+	<content><![CDATA[
+<?php
+
+/*
+Theme Name: $1
+Theme URI: $2
+Description: $3
+Author: $4
+Author URI: $5
+Template: $6
+Version: $7
+*/
+
+@import url("../$8/$9.css");
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>child-theme</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

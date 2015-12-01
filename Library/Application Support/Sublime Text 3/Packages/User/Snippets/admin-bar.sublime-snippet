@@ -1,0 +1,17 @@
+<snippet>
+	<content><![CDATA[
+		.admin-bar {
+			.${1:site-header} {
+				top: 46px;
+
+				@media (min-width: 783px) {
+					top: 32px;
+				}
+			}
+		}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>admin-bar</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

@@ -1,0 +1,35 @@
+<snippet>
+	<content><![CDATA[
+<?php
+
+/*
+Plugin Name: $1
+Plugin URI: $2
+Description: $3
+Version: $4
+Author: ${5:Aubrey Portwood}
+Author URI: ${6:http://aubreypwd.com}
+License: GPL2
+ */
+
+/*  Copyright ${7:2015} ${5:Aubrey Portwood} <${8:aubreypwd@gmail.com}>
+
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License, version 2, as
+	published by the Free Software Foundation.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program; if not, write to the Free Software
+	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+*/
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>plugin-header</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

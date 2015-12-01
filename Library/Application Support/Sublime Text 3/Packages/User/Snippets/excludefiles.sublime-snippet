@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[
+"file_exclude_patterns": [
+	"*.min.css", // Minified CSS
+	"*.min.js", // Minified JS
+	"js/project.js", // WDS project.js
+	"*.css.map", // Map files
+	"/style.css", // Since WDS renders min here
+],
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>excludefiles</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

@@ -1,0 +1,17 @@
+<snippet>
+	<content><![CDATA[
+// Hacks WordPress to follow these instead of the DB.
+define( 'WP_HOME',          'http://' . \$_SERVER['HTTP_HOST'] );
+define( 'WP_SITEURL',       'http://' . \$_SERVER['HTTP_HOST'] );
+define( 'WP_PLUGIN_DIR',    realpath(   \$_SERVER['DOCUMENT_ROOT']   . '/wp-content/plugins' ) );
+define( 'WP_PLUGIN_URL',    'http://' . \$_SERVER['HTTP_HOST']       . '/wp-content/plugins' );
+define( 'WP_THEMES_DIR',    realpath(   \$_SERVER['DOCUMENT_ROOT']   . '/wp-content/themes' ) );
+define( 'WP_THEMES_URL',    'http://' . \$_SERVER['HTTP_HOST']       . '/wp-content/themes' );
+define( 'WP_CONTENT_DIR',   realpath(   \$_SERVER['DOCUMENT_ROOT']   . '/wp-content' ) );
+define( 'WP_CONTENT_URL',   'http://' . \$_SERVER['HTTP_HOST']       . '/wp-content' );
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>domain-hack</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

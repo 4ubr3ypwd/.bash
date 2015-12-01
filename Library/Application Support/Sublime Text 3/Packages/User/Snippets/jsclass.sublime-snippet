@@ -1,0 +1,27 @@
+<snippet>
+<content><![CDATA[
+window.$1 = ( function( window, \$, $1 ) {
+	$1 = {
+
+		window: \$( window ),
+		loaded: '$1 loaded.',
+
+		__construct: function() {
+			$1.init();
+		},
+
+		init: function() {
+			console.log( $1.loaded );
+		},
+	};
+
+	\$( $1.__construct ); // Load the object's first function.
+	return $1; // Return the object to window.$1
+
+} ) ( window, jQuery, window.$1 );
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>jsclass</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
