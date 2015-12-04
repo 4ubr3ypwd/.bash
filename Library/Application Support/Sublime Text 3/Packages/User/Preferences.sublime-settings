@@ -19,7 +19,7 @@
 		"*.min.*"
 	],
 	"bold_folder_labels": true,
-	"color_scheme": "Packages/User/SublimeLinter/fox.dark (SL).tmTheme",
+	"color_scheme": "Packages/Theme - Fox/fox.dark.tmTheme",
 	"copy_with_empty_selection": true,
 	"draw_white_space": "all",
 	"ensure_newline_at_eof_on_save": true,
