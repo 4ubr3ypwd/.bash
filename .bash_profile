@@ -120,6 +120,16 @@ function git-put {
 }
 
 ###
+ # Puts this branch into another and comes back.
+ # E.g.: git-put-back this-branch master
+ ##
+function git-put-back {
+	git-put $(git branch|grep '*'|tr -d '* \n') $2
+	push
+	git checkout $1
+}
+
+###
  # Pushes the current branch.
  # E.g.: git-push
  ##
