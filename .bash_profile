@@ -124,7 +124,7 @@ function git-put {
  # E.g.: git-put-back this-branch master
  ##
 function git-put-back {
-	git-put $(git branch|grep '*'|tr -d '* \n') $2
+	git-put $1 $2
 	push
 	git checkout $1
 }
