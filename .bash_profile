@@ -36,6 +36,22 @@ function apply-patch {
 }
 
 ###
+ # Wrapper for 'git commit -a'
+ # E.g.: commit
+ ##
+function commit {
+	git commit -a
+}
+
+###
+ # Show 'git diff' in Sublime
+ # E.g.: git-diff
+ ##
+function git-diff {
+	git diff | subl -n -w
+}
+
+###
  # Launches CBT's Java applet.
  # E.g: cbt
  ##
