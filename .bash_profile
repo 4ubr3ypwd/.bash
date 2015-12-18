@@ -177,7 +177,15 @@ function git-log {
  # E.g: git-patch file.diff (Creates a patch as file.diff)
  ##
 function git-patch {
-	git diff master... --no-prefix > $1
+	git diff $1... --no-prefix > $2
+	up $2
+}
+
+###
+ # Quick patch
+ ##
+function git-patch-quick {
+	git-patch $1 ~/Downloads/wds.patch
 }
 
 ###
