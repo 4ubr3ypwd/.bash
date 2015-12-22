@@ -137,6 +137,14 @@ function git-put {
 }
 
 ###
+ # Show simple one-liner log
+ # E.g.: git-log-simple
+ ##
+function git-log-simple {
+	git log -n 30 --reverse --oneline
+}
+
+###
  # Puts this branch into another and comes back.
  # E.g.: git-put-back this-branch master
  ##
@@ -187,6 +195,7 @@ function git-patch {
  # Quick patch
  ##
 function git-patch-quick {
+	git-log-simple
 	git-patch $1 ~/Downloads/patch.patch
 }
 
