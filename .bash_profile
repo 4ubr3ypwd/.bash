@@ -185,7 +185,7 @@ function git-patch {
  # Quick patch
  ##
 function git-patch-quick {
-	git-patch $1 ~/Downloads/wds.patch
+	git-patch $1 ~/Downloads/patch.patch
 }
 
 ###
