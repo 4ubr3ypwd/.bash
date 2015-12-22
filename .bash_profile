@@ -132,6 +132,7 @@ function gif-up {
  # E.g: git-put this-branch master
  ##
 function git-put {
+	git-patch-quick $2
 	git checkout $2 && git merge $1
 }
 
@@ -140,6 +141,7 @@ function git-put {
  # E.g.: git-put-back this-branch master
  ##
 function git-put-back {
+	git-patch $2
 	git-put $1 $2
 	push
 	git checkout $1
@@ -193,6 +195,7 @@ function git-patch-quick {
  # E.g: git-update my-branch master (Updates my-branch with latest of master)
  ##
 function git-update {
+	git-patch-quick $2
 	git checkout $2 && git pull origin $2 && git checkout $1 && git merge $2
 }
 
