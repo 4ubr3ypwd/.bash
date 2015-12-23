@@ -28,6 +28,16 @@ export PATH="/Applications/XAMPP/xamppfiles/bin":$PATH;
 export PATH="/Applications/XAMPP/xamppfiles/sbin":$PATH;
 
 ###
+ # An easier way to get to a .dev project
+ # E.g.: goto clp, goto flexi
+ #
+ # #wds
+ ##
+function goto {
+	cd ~/htdocs/$1.dev/wp-content
+}
+
+###
  # Applies a Trac ticket patch via a URL.
  # E.g: apply-patch http://...
  ##
