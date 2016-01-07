@@ -203,10 +203,12 @@ function git-patch {
 
 ###
  # Quick patch
+ # E.g.: git-patch-quick branch
  ##
 function git-patch-quick {
+	current_time=$(date "+%Y-%m-%d-%H-%M-%S")
 	git-log-simple
-	git-patch $1 ~/Downloads/patch.patch
+	git-patch $1 ~/Downloads/$current_time.diff | | sed 's/\//-/g'
 }
 
 ###

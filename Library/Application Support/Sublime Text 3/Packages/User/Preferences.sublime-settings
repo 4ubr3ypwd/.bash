@@ -19,7 +19,7 @@
 		"*.min.*"
 	],
 	"bold_folder_labels": true,
-	"color_scheme": "Packages/Theme - Fox/fox.dark.tmTheme",
+	"color_scheme": "Packages/Theme - Spacegray/base16-eighties.dark.tmTheme",
 	"copy_with_empty_selection": true,
 	"draw_white_space": "all",
 	"ensure_newline_at_eof_on_save": true,
@@ -87,7 +87,7 @@
 	"spell_check": true,
 	"tab_size": 2,
 	"theirs_gutter": true,
-	"theme": "Fox.sublime-theme",
+	"theme": "Spacegray Eighties.sublime-theme",
 	"trim_trailing_white_space_on_save": true,
 	"use_simple_full_screen": true,
 	"vintage_lines.force_mode": true,
