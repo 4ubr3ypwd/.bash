@@ -4,10 +4,10 @@
 
 	// Create a jQuery Object.
 	\$.fn.${1:myObject} = function() {
-		var target = this; // Store the target element in this variable (jQuery stuff).
+		var $target = this; // Store the target element in this variable (jQuery stuff).
 
 		// Our stuff.
-		var ${1:myObject} = {
+		var application = {
 
 			/**
 			 * Run the Construct every time we create a new instance.
@@ -16,7 +16,8 @@
 			 */
 			__construct: function() {
 				this.loaded(); // Show that this is loaded, remove when you're sure it's loading in your project.
-				return this; // Return jQuery for chaining.
+
+				return application; // Return to jQuery for chaining.
 			},
 
 			/**
@@ -27,15 +28,16 @@
 			 * @return {Object} This object.
 			 */
 			loaded: function() {
-				console.log( 'Loaded ${1:myObject}...' );
-				console.log( ${1:myObject} ); // Our stuff.
-				console.log( target ); // jQuery stuff.
-				return this; // Return jQuery for chaining.
+				console.log( 'Loaded application...' );
+				console.log( application ); // Our stuff.
+				console.log( $target ); // jQuery stuff.
+
+				return application; // Return to jQuery for chaining.
 			},
 		};
 
-		${1:myObject}.__construct(); // Always run these things when the Object is created.
-		return ${1:myObject}; // return the object so we can access other properties.
+		application.__construct(); // Always run these things when the Object is created.
+		return application; // return the object so we can access other properties.
 	};
 } ( jQuery ) );
 
