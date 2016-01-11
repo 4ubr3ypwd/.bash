@@ -7,7 +7,7 @@
 		var target = this; // Store the target element in this variable (jQuery stuff).
 
 		// Our stuff.
-		this.${1:myObject} = {
+		var ${1:myObject} = {
 
 			/**
 			 * Run the Construct every time we create a new instance.
@@ -16,7 +16,7 @@
 			 */
 			__construct: function() {
 				this.loaded(); // Show that this is loaded, remove when you're sure it's loading in your project.
-				return this;
+				return this; // Return jQuery for chaining.
 			},
 
 			/**
@@ -28,14 +28,14 @@
 			 */
 			loaded: function() {
 				console.log( 'Loaded ${1:myObject}...' );
-				console.log( this ); // Our stuff.
+				console.log( ${1:myObject} ); // Our stuff.
 				console.log( target ); // jQuery stuff.
-				return this;
+				return this; // Return jQuery for chaining.
 			},
 		};
 
-		this.${1:myObject}.__construct(); // Always run these things when the Object is created.
-		return this.${1:myObject}; // return the object so we can access other properties.
+		${1:myObject}.__construct(); // Always run these things when the Object is created.
+		return ${1:myObject}; // return the object so we can access other properties.
 	};
 } ( jQuery ) );
 
