@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[
-RedirectMatch 301 ^/${1:wp-content/uploads/}(.*) http://${2}${1:wp-content/uploads/}
+RedirectMatch 301 ^/${1:wp-content/uploads/}(.*) http://${2}${1:wp-content/uploads/\$1}
 ]]>
 </content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
