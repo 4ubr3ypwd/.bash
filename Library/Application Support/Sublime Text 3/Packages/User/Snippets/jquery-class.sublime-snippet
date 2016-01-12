@@ -4,7 +4,7 @@
 
 	// Create a jQuery Object.
 	\$.fn.${1:myObject} = function() {
-		var $target = this; // Store the target element in this variable (jQuery stuff).
+		var \$target = this; // Store the target element in this variable (jQuery stuff).
 
 		// Our stuff.
 		var application = {
@@ -30,7 +30,7 @@
 			loaded: function() {
 				console.log( 'Loaded application...' );
 				console.log( application ); // Our stuff.
-				console.log( $target ); // jQuery stuff.
+				console.log( \$target ); // jQuery stuff.
 
 				return application; // Return to jQuery for chaining.
 			},
