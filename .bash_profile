@@ -28,6 +28,14 @@ export PATH="/Applications/XAMPP/xamppfiles/bin":$PATH;
 export PATH="/Applications/XAMPP/xamppfiles/sbin":$PATH;
 
 ###
+ # Create a native app from a website.
+ # E.g.: native "HipChat" "http://hipchat.com"
+ ##
+function native {
+	nativefier --app-name "$1" "$2"
+}
+
+###
  # An easier way to get to a .dev project
  # E.g.: goto clp, goto flexi
  #
