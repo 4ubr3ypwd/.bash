@@ -28,6 +28,14 @@ export PATH="/Applications/XAMPP/xamppfiles/bin":$PATH;
 export PATH="/Applications/XAMPP/xamppfiles/sbin":$PATH;
 
 ###
+ # Flushes DNS Cache
+ # E.g.: dns-flush
+ ##
+function dns-flush {
+	sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder
+}
+
+###
  # Create a native app from a website.
  # E.g.: native "HipChat" "http://hipchat.com"
  ##
