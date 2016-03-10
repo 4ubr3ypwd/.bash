@@ -1,0 +1,1 @@
+/Users/aubreypwd/.bash_profile
