@@ -8,13 +8,13 @@ export TERM=xterm-256color;
 alias ls='ls -GFh';
 
 #wpcli
-source ~/Cloud/dotfiles/bash/wp-cli/utils/wp-completion.bash
+source ~/dotfiles/bash/wp-cli/utils/wp-completion.bash
 
 # Default editor
 export EDITOR=vim;
 
 # Git Aware!
-export GITAWAREPROMPT=~/Cloud/dotfiles/bash/git-aware-prompt;
+export GITAWAREPROMPT=~/dotfiles/bash/git-aware-prompt;
 source $GITAWAREPROMPT/main.sh;
 export PS1="\n\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\[\033[00m\]\[\033[01;34m\]\w\[\033[00m\]\[$txtpur\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\] > ";
 export PS1="\n\[$txtpur\]\w \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\n$ ";
