@@ -2,6 +2,10 @@
 
 My bash scripts.
 
+# Symlinks
+
+`~/.bash_profile`
+
 # wp-cli
 
 This is used to do autocomplete via command line and is included in
