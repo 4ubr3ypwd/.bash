@@ -8,7 +8,7 @@ export TERM=xterm-256color;
 alias ls='ls -GFh';
 
 #wpcli
-source ~/.bash/wp-cli/utils/wp-completion.bash
+source ~/Cloud/dotfiles/bash/wp-cli/utils/wp-completion.bash
 
 # Default editor
 export EDITOR=vim;
