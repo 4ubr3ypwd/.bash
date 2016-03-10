@@ -1,3 +1,6 @@
 [submodule "wp-cli"]
 	path = wp-cli
 	url = https://github.com/wp-cli/wp-cli
+[submodule "git-aware-prompt"]
+	path = git-aware-prompt
+	url = https://github.com/jimeh/git-aware-prompt
