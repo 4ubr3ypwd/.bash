@@ -4,7 +4,7 @@ My bash scripts.
 
 # Symlinks
 
-`~/.bash_profile`
+`~/.bash_profile /.bash_profile`
 
 # wp-cli
 
