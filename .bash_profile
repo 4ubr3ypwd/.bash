@@ -223,7 +223,6 @@ function git-patch {
  ##
 function git-patch-quick {
 	current_time=$(date "+%Y-%m-%d-%H-%M-%S")
-	git-log-simple
 	git-patch $1 ~/Downloads/$current_time.diff
 }
 
