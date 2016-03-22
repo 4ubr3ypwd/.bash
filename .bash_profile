@@ -36,11 +36,19 @@ function dns-flush {
 }
 
 ###
+ # Sudo PHP
+ # E.g.: sphp script.php arg1 arg2
+ ##
+function sphp {
+	sudo php $1 $2 $3 $4 $5 $6 $7 $8 $9
+}
+
+###
  # Create a native app from a website.
  # E.g.: native "HipChat" "http://hipchat.com"
  ##
 function native {
-	nativefier --app-name "$1" "$2"
+	nativefier -n "$1" -o --insecure "$2"
 }
 
 ###
