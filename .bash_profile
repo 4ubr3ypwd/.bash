@@ -28,6 +28,13 @@ export PATH="/Applications/XAMPP/xamppfiles/bin":$PATH;
 export PATH="/Applications/XAMPP/xamppfiles/sbin":$PATH;
 
 ###
+ # Opens a new Safari instance.
+ ##
+function safari {
+	open -n -a Safari
+}
+
+###
  # Flushes DNS Cache
  # E.g.: dns-flush
  ##
