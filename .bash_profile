@@ -1,4 +1,4 @@
-# Set CLICOLOR if you want Ansi Colors in iTerm2
+# Set CLICOLOR if function you want Ansi Colors in iTerm2
 export CLICOLOR=1
 
 # Set colors to match iTerm2 Terminal Colors
@@ -33,6 +33,28 @@ export PATH="/Applications/XAMPP/xamppfiles/sbin":$PATH;
  ##
 function dns-flush {
 	sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder
+}
+
+###
+ # Add Class to Yo Plugin base.
+ ##
+function plugin-wp {
+	yo plugin-wp:$1 $2
+}
+
+###
+ # Yo Commands.
+ ##
+function yo-help {
+	echo "yo include include-name"
+	echo "yo cpt cpt-name"
+	echo "yo taxonomy taxonomy-name"
+	echo "yo options options-name"
+	echo "yo widget widget-name"
+	echo "yo pagebuilder class-name"
+	echo "yo endpoint class-name"
+	echo "yo js Javascript"
+	echo "yo css Styles"
 }
 
 ###
