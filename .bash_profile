@@ -98,9 +98,36 @@ function native {
  #
  # @since 4/5/16
  ##
-function ht {
-	cd ~/htdocs/$1.dev/wp-content
+function dev {
+	cd ~/htdocs/$1.dev/
 }
+
+	###
+	 # Wrapper for dev <project-name>
+	 #
+	 # @since 4/6/16
+	 ##
+	function htdocs {
+		dev $1
+	}
+
+	###
+	 # Wrapper for dev <project-name>
+	 #
+	 # @since 4/6/16
+	 ##
+	function docs {
+		dev $1
+	}
+
+	###
+	 # Wrapper for dev <project-name>
+	 #
+	 # @since 4/6/16
+	 ##
+	function goto {
+		dev $1
+	}
 
 ###
  # Open a Sublime Project.
@@ -110,8 +137,17 @@ function ht {
  # @since 4/5/16
  ##
 function proj {
-	subl ~/Projects/$1.dev.sublime-project
+	subl ~/Projects/$1.sublime-project
 }
+
+	###
+	 # Wrapper for proj <project-name>
+	 #
+	 # @since 4/6/16
+	 ##
+	function project {
+		proj $1
+	}
 
 ###
  # Applies a Trac ticket patch via a URL.
@@ -145,6 +181,20 @@ function git-diff {
 }
 
 ###
+ # Copies the current Git branch.
+ # E.g: copy-branch
+ #
+ # @since 4/5/16
+ ##
+function copy-branch {
+	git branch|grep '*'|tr -d '* \n'|pbcopy
+}
+
+function cb {
+	copy-branch
+}
+
+###
  # Launches CBT's Java applet.
  # E.g: cbt
  #
@@ -155,16 +205,13 @@ function cbt {
 }
 
 ###
- # Copies the current Git branch.
- # E.g: copy-branch
+ # Deletes a Git branch locally and remotely.
+ # E.g.: delete-branch my-branch
  #
  # @since 4/5/16
  ##
-function copy-branch {
-	git branch|grep '*'|tr -d '* \n'|pbcopy
-}
-function cb {
-	copy-branch
+function delete-branch {
+	git branch -D $1 && git push origin :$1
 }
 
 ###
@@ -175,16 +222,6 @@ function cb {
  ##
 function edit-snippets {
 	subl "~/Library/Application Support/Sublime Text 3/Packages/User/Snippets"
-}
-
-###
- # Deletes a Git branch locally and remotely.
- # E.g.: delete-branch my-branch
- #
- # @since 4/5/16
- ##
-function delete-branch {
-	git branch -D $1 && git push origin :$1
 }
 
 ###
@@ -239,25 +276,32 @@ function gif-up {
 }
 
 ###
- # Puts this branch into another branch.
- # E.g: git-put this-branch master
+ # Puts a branch into another branch.
  #
  # @since 4/5/16
  ##
-function git-put {
+function git-put-branch {
 	git-patch-quick $2
 	git checkout $2 && git merge $1
 }
 
-###
- # Show simple one-liner log
- # E.g.: git-log-simple
- #
- # @since 4/5/16
- ##
-function git-log-simple {
-	git log -n 30 --reverse --oneline
-}
+	###
+	 # Put this branch into another.
+	 #
+	 # @since 4/6/16
+	 ##
+	function git-put {
+		git-put-branch "$(git branch|grep '*'|tr -d '* \n'|pbcopy)" $1
+	}
+
+		###
+		 # Wrapper for git-put <branch-name>
+		 #
+		 # @since 4/6/16
+		 ##
+		function put {
+			git-put $1
+		}
 
 ###
  # Puts this branch into another and comes back.
@@ -273,6 +317,53 @@ function git-put-back {
 }
 
 ###
+ # Fancy Git Log
+ # E.g: git-log
+ #
+ # @since 4/5/16
+ ##
+function git-log {
+	git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+}
+
+	###
+	 # Wrapper for git-log
+	 #
+	 # @since 4/6/16
+	 ##
+	function log {
+		git-log
+	}
+
+	###
+	 # Show simple one-liner log
+	 # E.g.: git-log-simple
+	 #
+	 # @since 4/5/16
+	 ##
+	function git-log-simple {
+		git log -n 30 --reverse --oneline
+	}
+
+		###
+		 # Wrapper for git-log-simple
+		 #
+		 # @since 4/6/16
+		 ##
+		function short-log {
+			git-log-simple
+		}
+
+		###
+		 # Wrapper for git-log-simple
+		 #
+		 # @since 4/6/16
+		 ##
+		function slog {
+			git-log-simple
+		}
+
+###
  # Pushes the current branch.
  # E.g.: git-push
  #
@@ -281,9 +372,15 @@ function git-put-back {
 function git-push {
 	git push origin $(git branch|grep '*'|tr -d '* \n')
 }
-function push {
-	git-push
-}
+
+	###
+	 # Wrapper for git-push
+	 #
+	 # @since 4/5/16
+	 ##
+	function push {
+		git-push
+	}
 
 ###
  # Add all files over X MB into .gitignore
@@ -293,16 +390,6 @@ function push {
  ##
 function git-ignore {
 	mb="`$1M`" && find . -size +mb | cat >> .gitignore
-}
-
-###
- # Fancy Git Log
- # E.g: git-log
- #
- # @since 4/5/16
- ##
-function git-log {
-	git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 }
 
 ###
@@ -327,6 +414,15 @@ function git-patch-quick {
 	git-patch $1 ~/Downloads/$current_time.diff
 }
 
+	###
+	 # Wrapper for git-patch-quick
+	 #
+	 # @since 4/6/16
+	 ##
+	function gpatch {
+		git-patch-quick $1
+	}
+
 ###
  # Updates this branch with the latest of another.
  # E.g: git-update my-branch master (Updates my-branch with latest of master)
@@ -348,28 +444,33 @@ function git-pull {
 	git pull origin $(git branch|grep '*'|tr -d '* \n')
 }
 
-function pull {
-	git-pull
-}
+	###
+	 # Wrapper for git-pull
+	 #
+	 # @since 4/5/16
+	 ##
+	function pull {
+		git-pull
+	}
 
 ###
- # Quick wrapper for "grunt styles"
+ # Quick wrapper for "gulp styles"
  # E.g: gs
  #
  # @since 4/5/16
  ##
 function gs {
-	grunt styles
+	gulp stypes
 }
 
 ###
- # Quick wrapper for "grunt styles && grunt watch"
+ # Quick wrapper for "gulp styles && gulp watch"
  # E.g: gsgw
  #
  # @since 4/5/16
  ##
 function gsgw {
-	grunt styles && grunt watch
+	gulp styles && gulp watch
 }
 
 ###
@@ -398,7 +499,7 @@ function reload-bash {
  #
  # @since 4/5/16
  ##
-function xamppr {
+function restart-server {
 	sudo xampp restart
 }
 
@@ -428,7 +529,7 @@ function rsync-up {
  #
  # @since 4/5/16
  ##
-function xamppup {
+function start-server {
 	sudo xampp start
 }
 
