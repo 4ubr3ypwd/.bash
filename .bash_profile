@@ -20,8 +20,8 @@ export PS1="\n\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\[\033[00m\]\[\
 export PS1="\n\[$txtpur\]\w \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\n$ ";
 
 # $PATH
-export PATH="/usr/local/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/bin:$PATH";
+export PATH="/usr/local/sbin:$PATH";
 export PATH="/Applications/XAMPP/xamppfiles":$PATH;
 export PATH="/Applications/XAMPP/bin":$PATH;
 export PATH="/Applications/XAMPP/xamppfiles/bin":$PATH;
@@ -282,7 +282,9 @@ function gif-up {
  ##
 function git-put-branch {
 	git-patch-quick $2
-	git checkout $2 && git merge $1
+	git checkout $2
+	git merge $1
+	pull
 }
 
 	###
@@ -291,7 +293,7 @@ function git-put-branch {
 	 # @since 4/6/16
 	 ##
 	function git-put {
-		git-put-branch "$(git branch|grep '*'|tr -d '* \n'|pbcopy)" $1
+		git-put-branch $(git branch|grep '*'|tr -d '* \n') $1
 	}
 
 		###
@@ -370,6 +372,7 @@ function git-log {
  # @since 4/5/16
  ##
 function git-push {
+	git-pull
 	git push origin $(git branch|grep '*'|tr -d '* \n')
 }
 
@@ -424,12 +427,22 @@ function git-patch-quick {
 	}
 
 ###
+ # Update this branch with another.
+ #
+ # @since 4/7/16
+ ##
+function git-update {
+	git-update-branch $(git branch|grep '*'|tr -d '* \n') $1;
+}
+
+
+###
  # Updates this branch with the latest of another.
  # E.g: git-update my-branch master (Updates my-branch with latest of master)
  #
  # @since 4/5/16
  ##
-function git-update {
+function git-update-branch {
 	git-patch-quick $2
 	git checkout $2 && git pull origin $2 && git checkout $1 && git merge $2
 }
