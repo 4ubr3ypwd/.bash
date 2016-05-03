@@ -5,7 +5,7 @@ export CLICOLOR=1
 export TERM=xterm-256color;
 
 # Colorful ls
-alias ls='ls -GFh';
+alias ls='ls -laGFh';
 
 #wpcli
 source ~/dotfiles/bash/wp-cli/utils/wp-completion.bash
