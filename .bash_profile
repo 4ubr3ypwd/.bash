@@ -322,19 +322,28 @@ function git-put-back {
  # Fancy Git Log
  # E.g: git-log
  #
- # @since 4/5/16
+ # @since 5/4/16 Re-written to be used as git-log-big
  ##
-function git-log {
+function git-log-big {
 	git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 }
 
 	###
-	 # Wrapper for git-log
+	 # Wrapper for git-log-simple
 	 #
-	 # @since 4/6/16
+	 # @since 5/4/16 Re-written to use simple log.
 	 ##
 	function log {
-		git-log
+		git-log-simple
+	}
+
+	###
+	 # Wrapper for git-log-simple
+	 #
+	 # @since 5/4/16
+	 ##
+	function git-log {
+		git-log-simple
 	}
 
 	###
@@ -344,7 +353,7 @@ function git-log {
 	 # @since 4/5/16
 	 ##
 	function git-log-simple {
-		git log -n 30 --reverse --oneline
+		git log -n 30 --oneline
 	}
 
 		###
@@ -354,6 +363,15 @@ function git-log {
 		 ##
 		function short-log {
 			git-log-simple
+		}
+
+		###
+		 # Wrapper for git-log-big
+		 #
+		 # @since 5/4/16
+		 ##
+		function biglog {
+			git-log-big
 		}
 
 		###
