@@ -473,7 +473,7 @@ function git-pull {
  # @since 4/5/16
  ##
 function gs {
-	gulp stypes
+	gulp styles
 }
 
 ###
