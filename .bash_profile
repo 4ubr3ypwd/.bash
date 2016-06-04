@@ -37,6 +37,24 @@ function safari {
 }
 
 ###
+ # Easier way to exit.
+ #
+ # @since 5/13/16
+ ##
+function e {
+	exit
+}
+
+	###
+	 # Another easy way to exit.
+	 #
+	 # @since 5/13/16
+	 ##
+	function x {
+		exit
+	}
+
+###
  # Flushes DNS Cache
  # E.g.: dns-flush
  #
@@ -403,6 +421,15 @@ function git-push {
 		git-push
 	}
 
+	###
+	 # Super quick way to push.
+	 #
+	 # @since 5/5/16
+	 ##
+	function p {
+		push
+	}
+
 ###
  # Add all files over X MB into .gitignore
  # E.g: git-ignore 20 (Ignores files over 20MB).
@@ -505,6 +532,15 @@ function gsgw {
 }
 
 ###
+ # Quick wrapper for "gulp watch"
+ #
+ # @since 6/4/16
+ ##
+function gw {
+	gulp watch
+}
+
+###
  # Quick wrapper for "npm install && bower install"
  # E.g: install
  #
@@ -571,5 +607,5 @@ function start-server {
  # @since 4/5/16
  ##
 function submodules {
-	git submodule init && git submodule update
+	git submodule update --init --recursive
 }
