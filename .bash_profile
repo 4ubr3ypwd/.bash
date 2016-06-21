@@ -28,6 +28,33 @@ export PATH="/Applications/XAMPP/xamppfiles/bin":$PATH;
 export PATH="/Applications/XAMPP/xamppfiles/sbin":$PATH;
 
 ###
+ # Watch debug.log
+ #
+ # @since 6/21/16
+ ##
+function dlog {
+	tail -f debug.log
+}
+
+	###
+	 # Reset debug.log and watch it.
+	 #
+	 # @since 6/21/16
+	 ##
+	function dlog-reset {
+		rm debug.log && touch debug.log && tail -f debug.log
+	}
+
+		###
+		 # Wrapper for dlog-reset
+		 #
+		 # @since 6/21/16
+		 ##
+		function dlogr {
+			dlog-reset
+		}
+
+###
  # Opens a new Safari instance.
  #
  # @since 4/5/16
