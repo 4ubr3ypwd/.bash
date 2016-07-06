@@ -133,7 +133,7 @@ function sphp {
  # E.g.: native "HipChat" "http://hipchat.com"
  ##
 function native {
-	nativefier -n "$1" -o --insecure "$2"
+	nativefier -n "$1" -o --insecure "$2" --flash
 }
 
 ###
