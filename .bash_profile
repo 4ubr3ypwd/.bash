@@ -28,6 +28,23 @@ export PATH="/Applications/XAMPP/xamppfiles/bin":$PATH;
 export PATH="/Applications/XAMPP/xamppfiles/sbin":$PATH;
 
 ###
+ # Create a WDS Site.
+ #
+ # E.g.: new-wds-site sitename.dev git@webdevstudios.git.beanstalkapp.com:/webdevstudios/youth-entrepreneurs.git
+ #
+ # @since 7/12/16
+ ##
+function new-wds-site {
+	mkdir "~/htdocs/$1"
+	cd "~/htdocs/$1"
+	wp core download
+	rm -Rf wp-content
+	git clone "$2" wp-content
+	sphp "~/scripts/xampp.php add $1"
+	php "~/scripts/add-db.php $1"
+}
+
+###
  # Watch debug.log
  #
  # @since 6/21/16
