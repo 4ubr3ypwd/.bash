@@ -42,6 +42,8 @@ function new-wds-site {
 	git clone "$2" wp-content
 	sphp "~/scripts/xampp.php add $1"
 	php "~/scripts/add-db.php $1"
+	cd wp-content
+	submodules
 }
 
 ###
