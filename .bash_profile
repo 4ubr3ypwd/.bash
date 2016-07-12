@@ -44,6 +44,7 @@ function new-wds-site {
 	php "~/scripts/add-db.php $1"
 	cd wp-content
 	submodules
+	open "http://$1"
 }
 
 ###
