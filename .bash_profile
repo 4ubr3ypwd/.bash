@@ -44,7 +44,10 @@ function new-wds-site {
 	php "~/scripts/add-db.php $1"
 	cd wp-content
 	submodules
+	cd ..
 	open "http://$1"
+	subl "~/htdocs/$1"
+	subl "~/htdocs/$1/wp-config.php"
 }
 
 ###
@@ -296,7 +299,8 @@ function edit-snippets {
  # @since 4/5/16
  ##
 function deploy {
-	wget https://raw.githubusercontent.com/aubreypwd/deploy-git-wordpress-org/master/deploy-git-wordpress-org.sh && sh deploy-git-wordpress-org.sh $1 $2 $3
+	wget https://raw.githubusercontent.com/aubreypwd/deploy-git-wordpress-org/master/deploy-git-wordpress-org.sh
+	sh deploy-git-wordpress-org.sh $1 $2 $3
 	rm deploy-git-wordpress-org.sh
 }
 
