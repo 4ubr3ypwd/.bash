@@ -662,12 +662,34 @@ function submodules {
 }
 
 ###
- # Get the count of commits for the day until now.
+ # Get the count of commits for the day.
  #
  # E.g. commit-count
  #
  # @since 8/12/2016
  ##
 function commit-count {
-	git shortlog -s -n --since="4am"
+	git shortlog -s -n
 }
+
+	###
+	 # Get my commit count for the day.
+	 #
+	 # E.g. my-commit-count
+	 #
+	 # @since 8/12/16
+	 ##
+	function my-commit-count {
+		commit-count --since="4am"
+	}
+
+		###
+		 # Wrapper for my-commit-count
+		 #
+		 # E.g. my-count
+		 #
+		 # @since 8/12/16
+		 ##
+		function my-count {
+			my-commit-count
+		}
