@@ -680,7 +680,7 @@ function commit-count {
 	 # @since 8/12/16
 	 ##
 	function my-commit-count {
-		commit-count --since="4am"
+		commit-count --since="4am" | grep "Aubrey Portwood"
 	}
 
 		###
