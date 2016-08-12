@@ -660,3 +660,14 @@ function start-server {
 function submodules {
 	git submodule update --init --recursive
 }
+
+###
+ # Get the count of commits for the day until now.
+ #
+ # E.g. commit-count
+ #
+ # @since 8/12/2016
+ ##
+function commit-count {
+	git shortlog -s -n --since="4am"
+}
