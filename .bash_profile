@@ -181,7 +181,7 @@ function dev {
 	 # @since 8/14/2016
 	 ##
 	function wds-dev {
-		dev
+		dev $1
 		cd wp-content
 	}
 
@@ -193,7 +193,7 @@ function dev {
 		 # @since 8/14/2016
 		 ##
 		function wdsdev {
-			wds-dev
+			wds-dev $1
 		}
 
 	###
