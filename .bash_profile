@@ -171,29 +171,37 @@ function dev {
 }
 
 	###
+	 # Goto wp-content.
+	 #
+	 # WDS usually VC's the wp-content folder, so let's
+	 # go there.
+	 #
+	 # E.g. wds-dev centralmarket
+	 #
+	 # @since 8/14/2016
+	 ##
+	function wds-dev {
+		dev
+		cd wp-content
+	}
+
+		###
+		 # Wrapper for wds-dev
+		 #
+		 # E.g. wds-dev centralmarket
+		 #
+		 # @since 8/14/2016
+		 ##
+		function wdsdev {
+			wds-dev
+		}
+
+	###
 	 # Wrapper for dev <project-name>
 	 #
 	 # @since 4/6/16
 	 ##
 	function htdocs {
-		dev $1
-	}
-
-	###
-	 # Wrapper for dev <project-name>
-	 #
-	 # @since 4/6/16
-	 ##
-	function docs {
-		dev $1
-	}
-
-	###
-	 # Wrapper for dev <project-name>
-	 #
-	 # @since 4/6/16
-	 ##
-	function goto {
 		dev $1
 	}
 
@@ -680,7 +688,7 @@ function count-commits {
 	 # @since 8/12/16
 	 ##
 	function count-commits-today {
-		git shortlog -s -n --since="today" | grep "Aubrey Portwood"
+		git shortlog -s -n --since="6am" | grep "Aubrey Portwood"
 	}
 
 	###
