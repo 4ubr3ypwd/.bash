@@ -243,8 +243,59 @@ function apply-patch {
  # @since 4/5/16
  ##
 function commit {
-	git commit -a
+	git commit "$1"
 }
+
+	###
+	 # Wrapper for commit
+	 # E.g.: commit
+	 #
+	 # @since 8/24/16
+	 ##
+	function co {
+		git commit "$1"
+	}
+
+	###
+	 # Commit, then push.
+	 # E.g.: co-push -am "Message"
+	 #
+	 # @since 8/24/16
+	 ##
+	function co-push {
+		git commit "$1"
+		push
+	}
+
+		###
+		 # Wrapper for co-push
+		 # E.g.: commit-push
+		 #
+		 # @since 8/24/16
+		 ##
+		function commit-push {
+			co-push "$1"
+		}
+
+		###
+		 # Wrapper for co-push.
+		 # E.g.: git-commit-push
+		 #
+		 # @since 8/24/16
+		 ##
+		function git-commit-push {
+			co-push "$1"
+		}
+
+		###
+		 # Wrapper for co-push
+		 # E.g.: copush -am "message"
+		 #
+		 # @since 8/24/16
+		 ##
+		function copush {
+			co-push "$1"
+		}
 
 ###
  # Show 'git diff' in Sublime
