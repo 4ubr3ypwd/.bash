@@ -19,14 +19,6 @@ source $GITAWAREPROMPT/main.sh;
 export PS1="\n\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\[\033[00m\]\[\033[01;34m\]\w\[\033[00m\]\[$txtpur\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\] > ";
 export PS1="\n\[$txtpur\]\w \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\n$ ";
 
-# $PATH
-export PATH="/usr/local/bin:$PATH";
-export PATH="/usr/local/sbin:$PATH";
-export PATH="/Applications/XAMPP/xamppfiles":$PATH;
-export PATH="/Applications/XAMPP/bin":$PATH;
-export PATH="/Applications/XAMPP/xamppfiles/bin":$PATH;
-export PATH="/Applications/XAMPP/xamppfiles/sbin":$PATH;
-
 ###
  # Create a WDS Site.
  #
