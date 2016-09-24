@@ -98,7 +98,7 @@ __powerline() {
             local BG_EXIT="$BG_BASE02"
         fi
 
-        PS1=""
+        PS1="\n"
         # PS1+="$BG_EXIT$PS_SYMBOL $RESET"
         PS1+="$BG_BASE02$FG_CYAN\w $RESET"
         PS1+="$BG_BASE02$FG_MAGENTA$(__git_info)$RESET\n$ "
