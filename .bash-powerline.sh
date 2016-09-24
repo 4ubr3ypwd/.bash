@@ -86,7 +86,7 @@ __powerline() {
         [ -n "$behindN" ] && marks+=" $GIT_NEED_PULL_SYMBOL$behindN"
 
         # print the git branch segment without a trailing newline
-        printf " $GIT_BRANCH_SYMBOL$branch$marks $RESET "
+        printf "$GIT_BRANCH_SYMBOL$branch$marks $RESET "
     }
 
     ps1() {
@@ -100,8 +100,8 @@ __powerline() {
 
         PS1=""
         # PS1+="$BG_EXIT$PS_SYMBOL $RESET"
-        PS1+="$BG_YELLOW$FG_BASE3$(__git_info)$RESET"
-        PS1+="$BG_BASE02$FG_RED\w $RESET"
+        PS1+="$BG_BASE02$FG_CYAN\w $RESET"
+        PS1+="$BG_BASE02$FG_MAGENTA$(__git_info)$RESET\n$ "
     }
 
     PROMPT_COMMAND=ps1
