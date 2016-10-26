@@ -93,14 +93,14 @@ __powerline() {
         # Check the exit code of the previous command and display different
         # colors in the prompt accordingly.
         if [ $? -eq 0 ]; then
-            local BG_EXIT="$BG_BASE02"
+            local BG_EXIT=""
         else
-            local BG_EXIT="$BG_BASE02"
+            local BG_EXIT=""
         fi
 
         PS1="\n"
-        PS1+="$BG_BASE02$FG_CYAN\w $RESET"
-        PS1+="$BG_BASE02$FG_MAGENTA$(__git_info)$RESET"
+        PS1+="$FG_CYAN\w $RESET"
+        PS1+="$FG_MAGENTA$(__git_info)$RESET"
         # PS1+="$BG_EXIT$FG_YELLOW$PS_SYMBOL$RESET"
         PS1+="\n$ "
     }
