@@ -24,8 +24,18 @@ source ~/.bash/.bash-powerline.sh
 # export PS1="\n\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\[\033[00m\]\[\033[01;34m\]\w\[\033[00m\]\[$txtpur\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\] > ";
 # export PS1="\n\[$txtpur\]\w \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\n$ ";
 
+# vv
+export PATH=$PATH:/Applications/XAMPP/xamppfiles/htdocs/centralmarket.dev/wp-content/vagrant-local/vv
+source $( echo $(which vv)-completions)
+
+###
+ # FUNCTIONS
+ # =========
+ ##
+
 ###
  # Create a WDS Site.
+ #
  #
  # E.g.: new-wds-site sitename.dev git@webdevstudios.git.beanstalkapp.com:/webdevstudios/youth-entrepreneurs.git
  #
@@ -79,7 +89,7 @@ function dlog {
  #
  # @since 4/5/16
  ##
-function safari {
+function new-safari {
 	open -n -a Safari
 }
 
@@ -102,7 +112,8 @@ function e {
 	}
 
 ###
- # Flushes DNS Cache
+ # Flushes DNS Cache.
+ #
  # E.g.: dns-flush
  #
  # @since 4/5/16
@@ -111,34 +122,38 @@ function dns-flush {
 	sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder
 }
 
-###
- # Add Class to Yo Plugin base.
- #
- # @since 4/5/16
- ##
-function plugin-wp {
-	yo plugin-wp:$1 $2
-}
+	###
+	 # Wrapper for dns-flush().
+	 #
+	 # @since 11/22/16
+	 ##
+	function flush-dns {
+		dns-flush
+	}
 
 ###
  # Yo Commands.
  #
  # @since 4/5/16
+ #
+ # @see https://github.com/WebDevStudios/generator-plugin-wp#sub-generators
  ##
 function yo-help {
-	echo "yo include include-name"
-	echo "yo cpt cpt-name"
-	echo "yo taxonomy taxonomy-name"
-	echo "yo options options-name"
-	echo "yo widget widget-name"
-	echo "yo pagebuilder class-name"
-	echo "yo endpoint class-name"
-	echo "yo js Javascript"
-	echo "yo css Styles"
+	echo "yo plugin-wp:include include-name"
+	echo "yo plugin-wp:cpt cpt-name"
+	echo "yo plugin-wp:taxonomy taxonomy-name"
+	echo "yo plugin-wp:options options-name"
+	echo "yo plugin-wp:widget widget-name"
+	echo "yo plugin-wp:pagebuilder class-name"
+	echo "yo plugin-wp:endpoint class-name"
+	echo "yo plugin-wp:js Javascript"
+	echo "yo plugin-wp:css Styles"
 }
 
 ###
- # Sudo PHP
+ # Sudo PHP.
+ #
+ #
  # E.g.: sphp script.php arg1 arg2
  ##
 function sphp {
@@ -150,14 +165,34 @@ function sphp {
  #
  # @since 4/5/16
  #
+ #
  # E.g.: native "HipChat" "http://hipchat.com"
  ##
 function native {
 	nativefier -n "$1" -o --insecure "$2" --flash
 }
 
+	###
+	 # Wrapper for native().
+	 #
+	 # @since 11/22/16
+	 ##
+	function new-app {
+		native $1 $2
+	}
+
+	###
+	 # Wrapper for native().
+	 #
+	 # @since 11/22/16
+	 ##
+	function app {
+		native $1 $2
+	}
+
 ###
  # An easier way to get to a .dev project
+ #
  #
  # E.g.: goto clp, goto flexi
  #
@@ -182,19 +217,8 @@ function dev {
 		cd wp-content
 	}
 
-		###
-		 # Wrapper for wds-dev
-		 #
-		 # E.g. wds-dev centralmarket
-		 #
-		 # @since 8/14/2016
-		 ##
-		function wdsdev {
-			wds-dev $1
-		}
-
 	###
-	 # Wrapper for dev <project-name>
+	 # Wrapper for dev <project-name>.
 	 #
 	 # @since 4/6/16
 	 ##
@@ -203,109 +227,29 @@ function dev {
 	}
 
 ###
- # Open a Sublime Project.
- #
- # E.g.: proj clp
- #
- # @since 4/5/16
- ##
-function proj {
-	subl ~/Projects/$1.sublime-project
-}
-
-	###
-	 # Wrapper for proj <project-name>
-	 #
-	 # @since 4/6/16
-	 ##
-	function project {
-		proj $1
-	}
-
-###
  # Applies a Trac ticket patch via a URL.
  #
- # E.g: apply-patch http://...
+ #
+ # E.g: trac-apply-patch <the url to the trac ticket>
  #
  # @since 4/5/16
  ##
-function apply-patch {
+function trac-apply-patch {
 	curl -k $1 | patch -p0
 }
 
-###
- # Wrapper for 'git commit -a'
- # E.g.: commit
- #
- # @since 4/5/16
- ##
-function commit {
-	git commit "$1"
-}
-
 	###
-	 # Wrapper for commit
-	 # E.g.: commit
+	 # Wrapper for trac-apply-patch().
 	 #
-	 # @since 8/24/16
+	 # @since 11/22/16
 	 ##
-	function co {
-		git commit "$1"
+	function apply-trac-patch {
+		trac-apply-patch $1
 	}
-
-	###
-	 # Commit, then push.
-	 # E.g.: co-push -am "Message"
-	 #
-	 # @since 8/24/16
-	 ##
-	function co-push {
-		git commit "$1"
-		push
-	}
-
-		###
-		 # Wrapper for co-push
-		 # E.g.: commit-push
-		 #
-		 # @since 8/24/16
-		 ##
-		function commit-push {
-			co-push "$1"
-		}
-
-		###
-		 # Wrapper for co-push.
-		 # E.g.: git-commit-push
-		 #
-		 # @since 8/24/16
-		 ##
-		function git-commit-push {
-			co-push "$1"
-		}
-
-		###
-		 # Wrapper for co-push
-		 # E.g.: copush -am "message"
-		 #
-		 # @since 8/24/16
-		 ##
-		function copush {
-			co-push "$1"
-		}
-
-###
- # Show 'git diff' in Sublime
- # E.g.: git-diff
- #
- # @since 4/5/16
- ##
-function git-diff {
-	git diff | subl -n -w
-}
 
 ###
  # Copies the current Git branch.
+ #
  # E.g: copy-branch
  #
  # @since 4/5/16
@@ -314,32 +258,38 @@ function copy-branch {
 	git branch|grep '*'|tr -d '* \n'|pbcopy
 }
 
-function cb {
-	copy-branch
-}
-
-###
- # Launches CBT's Java applet.
- # E.g: cbt
- #
- # @since 4/5/16
- ##
-function cbt {
-	java -jar ~/.cbttunnel.jar -authkey ufce062ef90b417c
-}
+	###
+	 # Wrapper for copy-branch.
+	 #
+	 # @since 4/5/16
+	 ##
+	function cb {
+		copy-branch
+	}
 
 ###
  # Deletes a Git branch locally and remotely.
- # E.g.: delete-branch my-branch
+ #
+ # E.g.: git-delete-branch my-branch
  #
  # @since 4/5/16
  ##
-function delete-branch {
+function git-delete-branch {
 	git branch -D $1 && git push origin :$1
 }
 
+	###
+	 # Wrapper for git-delete-branch().
+	 #
+	 # @since 11/22/16
+	 ##
+	function delete-branch {
+		git-delete-branch $1
+	}
+
 ###
  # Edits Sublime Text Snippets
+ #
  # E.g: edit-snippets
  #
  # @since 4/5/16
@@ -350,18 +300,29 @@ function edit-snippets {
 
 ###
  # Deploys a WordPress plugin to SVN
- # E.g: deploy plugin_file_with_header.php aubreypwd false
+ #
+ # E.g: wp-org-deploy plugin_file_with_header.php aubreypwd false
  #
  # @since 4/5/16
  ##
-function deploy {
+function wp-org-deploy {
 	wget https://raw.githubusercontent.com/aubreypwd/deploy-git-wordpress-org/master/deploy-git-wordpress-org.sh
 	sh deploy-git-wordpress-org.sh $1 $2 $3
 	rm deploy-git-wordpress-org.sh
 }
 
+	###
+	 # Wrapper for wp-org-deploy().
+	 #
+	 # @since 11/22/16
+	 ##
+	function wp-deploy {
+		wp-org-deploy $1 $2 $3 $4
+	}
+
 ###
  # Edit's this file.
+ #
  # E.g: edit-bash
  #
  # @since 4/5/16
@@ -372,6 +333,7 @@ function edit-bash {
 
 ###
  # Edits the /etc/hosts file.
+ #
  # E.g: edit-hosts
  #
  # @since 4/5/16
@@ -382,6 +344,7 @@ function edit-hosts {
 
 ###
  # Edits XAMPP files.
+ #
  # E.g: edit-xampp
  #
  # @since 4/5/16
@@ -392,6 +355,7 @@ function edit-xampp {
 
 ###
  # Gifify's a .mov file and uploads it to CloudUp
+ #
  # E.g: gifup myfile.mov (Creates myfile.gif)
  #
  # @since 4/5/16
@@ -405,11 +369,11 @@ function gif-up {
  #
  # @since 4/5/16
  ##
-function git-put-branch {
-	git-patch-quick $2
-	git checkout $2
-	git merge $1
-	pull
+function git-put-patch {
+	git-patch-up $2    # Create a patch and upload to cloudup.
+	git checkout $2    # Checkout the target branch.
+	git merge $1       # Merge in the intended branch.
+	pull               # Pull down any latest changes on the branch.
 }
 
 	###
@@ -418,7 +382,7 @@ function git-put-branch {
 	 # @since 4/6/16
 	 ##
 	function git-put {
-		git-put-branch $(git branch|grep '*'|tr -d '* \n') $1
+		git-put-patch $(git branch|grep '*'|tr -d '* \n') $1
 	}
 
 		###
@@ -431,20 +395,8 @@ function git-put-branch {
 		}
 
 ###
- # Puts this branch into another and comes back.
- # E.g.: git-put-back this-branch master
- #
- # @since 4/5/16
- ##
-function git-put-back {
-	git-patch-quick $2
-	git-put $1 $2
-	push
-	git checkout $1
-}
-
-###
  # Fancy Git Log
+ #
  # E.g: git-log
  #
  # @since 5/4/16 Re-written to be used as git-log-big
@@ -454,25 +406,8 @@ function git-log-big {
 }
 
 	###
-	 # Wrapper for git-log-simple
+	 # Show simple one-liner log.
 	 #
-	 # @since 5/4/16 Re-written to use simple log.
-	 ##
-	function log {
-		git-log-simple
-	}
-
-	###
-	 # Wrapper for git-log-simple
-	 #
-	 # @since 5/4/16
-	 ##
-	function git-log {
-		git-log-simple
-	}
-
-	###
-	 # Show simple one-liner log
 	 # E.g.: git-log-simple
 	 #
 	 # @since 4/5/16
@@ -482,7 +417,25 @@ function git-log-big {
 	}
 
 		###
-		 # Wrapper for git-log-simple
+		 # Wrapper for git-log-simple.
+		 #
+		 # @since 5/4/16 Re-written to use simple log.
+		 ##
+		function log {
+			git-log-simple
+		}
+
+		###
+		 # Wrapper for git-log-simple.
+		 #
+		 # @since 5/4/16
+		 ##
+		function git-log {
+			git-log-simple
+		}
+
+		###
+		 # Wrapper for git-log-simple.
 		 #
 		 # @since 4/6/16
 		 ##
@@ -491,16 +444,16 @@ function git-log-big {
 		}
 
 		###
-		 # Wrapper for git-log-big
+		 # Wrapper for git-log-big().
 		 #
 		 # @since 5/4/16
 		 ##
-		function biglog {
+		function git-big-log {
 			git-log-big
 		}
 
 		###
-		 # Wrapper for git-log-simple
+		 # Wrapper for git-log-simple.
 		 #
 		 # @since 4/6/16
 		 ##
@@ -510,13 +463,13 @@ function git-log-big {
 
 ###
  # Pushes the current branch.
+ #
  # E.g.: git-push
  #
  # @since 4/5/16
  ##
 function git-push {
-	git-pull
-	git push origin $(git branch|grep '*'|tr -d '* \n')
+	git push origin $(git branch|grep '*'|tr -d '* \n')          # Finally push.
 }
 
 	###
@@ -538,75 +491,39 @@ function git-push {
 	}
 
 ###
- # Add all files over X MB into .gitignore
- # E.g: git-ignore 20 (Ignores files over 20MB).
- #
- # @since 4/5/16
- ##
-function git-ignore {
-	mb="`$1M`" && find . -size +mb | cat >> .gitignore
-}
-
-###
  # Creates a patch using Git
- # E.g: git-patch file.diff (Creates a patch as file.diff)
+ #
+ # E.g: git-patch-up file.diff (Creates a patch as file.diff)
  #
  # @since 4/5/16
+ # @since 11/22/16 Updated this to be git-patch-up
  ##
-function git-patch {
+function git-patch-up {
 	git diff $1... --no-prefix > $2
 	up $2
 }
 
-###
- # Quick patch
- # E.g.: git-patch-quick branch
- #
- # @since 4/5/16
- ##
-function git-patch-quick {
-	current_time=$(date "+%Y-%m-%d-%H-%M-%S")
-	git-patch $1 ~/Downloads/$current_time.diff
-}
-
 	###
-	 # Wrapper for git-patch-quick
+	 # Quick patch
 	 #
-	 # @since 4/6/16
+	 # E.g.: git-patch branch
+	 #
+	 # @since 4/5/16
 	 ##
-	function gpatch {
-		git-patch-quick $1
+	function git-patch {
+		current_time=$(date "+%Y-%m-%d-%H-%M-%S")
+		git-patch-up $1 ~/Downloads/$current_time.diff
 	}
 
 ###
- # Update this branch with another.
- #
- # @since 4/7/16
- ##
-function git-update {
-	git-update-branch $(git branch|grep '*'|tr -d '* \n') $1;
-}
-
-
-###
- # Updates this branch with the latest of another.
- # E.g: git-update my-branch master (Updates my-branch with latest of master)
- #
- # @since 4/5/16
- ##
-function git-update-branch {
-	git-patch-quick $2
-	git checkout $2 && git pull origin $2 && git checkout $1 && git merge $2
-}
-
-###
  # Pulls down the current branch.
+ #
  # E.g.: git-pull | pull
  #
  # @since 4/5/16
  ##
 function git-pull {
-	git pull origin $(git branch|grep '*'|tr -d '* \n')
+	git pull --rebase origin $(git branch|grep '*'|tr -d '* \n')
 }
 
 	###
@@ -619,36 +536,8 @@ function git-pull {
 	}
 
 ###
- # Quick wrapper for "gulp styles"
- # E.g: gs
- #
- # @since 4/5/16
- ##
-function gs {
-	gulp styles
-}
-
-###
- # Quick wrapper for "gulp styles && gulp watch"
- # E.g: gsgw
- #
- # @since 4/5/16
- ##
-function gsgw {
-	gulp styles && gulp watch
-}
-
-###
- # Quick wrapper for "gulp watch"
- #
- # @since 6/4/16
- ##
-function gw {
-	gulp watch
-}
-
-###
  # Quick wrapper for "npm install && bower install"
+ #
  # E.g: install
  #
  # @since 4/5/16
@@ -659,6 +548,7 @@ function install {
 
 ###
  # Re-sources this bash file.
+ #
  # E.g: reload-bash
  #
  # @since 4/5/16
@@ -668,17 +558,19 @@ function reload-bash {
 }
 
 ###
- # Quick wrapper for "sudo xampp restart"
- # E.g: xamppr
+ # Sudo xampp.
  #
- # @since 4/5/16
+ # Always sudo xampp.
+ #
+ # @since  11/22/16
  ##
-function restart-server {
-	sudo xampp restart
+function xampp {
+	sudo xampp $1 $2
 }
 
 ###
  # Pulls files to destination.
+ #
  # E.g: rsync-down username@domain:/var/www/ /var/www
  #
  # @since 4/5/16
@@ -689,6 +581,7 @@ function rsync-down {
 
 ###
  # Sends files up to location.
+ #
  # E.g: rsync-up /var/www/ username@domain:/var/www/
  #
  # @since 4/5/16
@@ -698,17 +591,8 @@ function rsync-up {
 }
 
 ###
- # Quick wrapper for "sudo xampp start"
- # E.g: xamppup
- #
- # @since 4/5/16
- ##
-function start-server {
-	sudo xampp start
-}
-
-###
  # Quick wrapper for "git submodule init && git submodule update"
+ #
  # E.g: submodules
  #
  # @since 4/5/16
@@ -716,6 +600,15 @@ function start-server {
 function submodules {
 	git submodule update --init --recursive
 }
+
+	###
+	 # Wrapper for submodules.
+	 #
+	 # @since 11/22/16 submodules is hard to type.
+	 ##
+	function modules {
+		submodules
+	}
 
 ###
  # Get the count of commits for the day.
