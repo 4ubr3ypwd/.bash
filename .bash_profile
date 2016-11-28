@@ -367,6 +367,7 @@ function gif-up {
 function git-put-patch {
 	git-patch "$2"    # Create a patch and upload to cloudup.
 	git checkout "$2"    # Checkout the target branch.
+	pull
 	git merge "$1"       # Merge in the intended branch.
 }
 
