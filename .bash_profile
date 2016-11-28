@@ -36,7 +36,6 @@ source $( echo $(which vv)-completions)
 ###
  # Create a WDS Site.
  #
- #
  # E.g.: new-wds-site sitename.dev git@webdevstudios.git.beanstalkapp.com:/webdevstudios/youth-entrepreneurs.git
  #
  # @since 7/12/16
@@ -153,7 +152,6 @@ function yo-help {
 ###
  # Sudo PHP.
  #
- #
  # E.g.: sphp script.php arg1 arg2
  ##
 function sphp {
@@ -164,7 +162,6 @@ function sphp {
  # Create a native app from a website.
  #
  # @since 4/5/16
- #
  #
  # E.g.: native "HipChat" "http://hipchat.com"
  ##
@@ -192,7 +189,6 @@ function native {
 
 ###
  # An easier way to get to a .dev project
- #
  #
  # E.g.: goto clp, goto flexi
  #
@@ -228,7 +224,6 @@ function dev {
 
 ###
  # Applies a Trac ticket patch via a URL.
- #
  #
  # E.g: trac-apply-patch <the url to the trac ticket>
  #
@@ -370,10 +365,9 @@ function gif-up {
  # @since 4/5/16
  ##
 function git-put-patch {
-	git-patch-up $2    # Create a patch and upload to cloudup.
-	git checkout $2    # Checkout the target branch.
-	git merge $1       # Merge in the intended branch.
-	pull               # Pull down any latest changes on the branch.
+	git-patch "$2"    # Create a patch and upload to cloudup.
+	git checkout "$2"    # Checkout the target branch.
+	git merge "$1"       # Merge in the intended branch.
 }
 
 	###
@@ -382,7 +376,7 @@ function git-put-patch {
 	 # @since 4/6/16
 	 ##
 	function git-put {
-		git-put-patch $(git branch|grep '*'|tr -d '* \n') $1
+		git-put-patch "$(git branch|grep '*'|tr -d '* \n')" "$1"
 	}
 
 		###
@@ -391,7 +385,7 @@ function git-put-patch {
 		 # @since 4/6/16
 		 ##
 		function put {
-			git-put $1
+			git-put "$1"
 		}
 
 ###
@@ -482,12 +476,13 @@ function git-push {
 	}
 
 	###
-	 # Super quick way to push.
+	 # Super quick way to push (Deprecated).
 	 #
 	 # @since 5/5/16
+	 # @since 11/28/16 Deprecated because p could mean either push or pull and it gets confusing, use push() and pull() instead.
 	 ##
 	function p {
-		push
+		echo "[Deprecated] p could mean either push or pull and it gets confusing, use push() and pull() instead."
 	}
 
 ###
@@ -499,8 +494,8 @@ function git-push {
  # @since 11/22/16 Updated this to be git-patch-up
  ##
 function git-patch-up {
-	git diff $1... --no-prefix > $2
-	up $2
+	git diff "$1"... --no-prefix > "$2"
+	up "$2"
 }
 
 	###
@@ -523,7 +518,7 @@ function git-patch-up {
  # @since 4/5/16
  ##
 function git-pull {
-	git pull --rebase origin $(git branch|grep '*'|tr -d '* \n')
+	git pull origin $(git branch|grep '*'|tr -d '* \n')
 }
 
 	###
