@@ -481,9 +481,10 @@ function git-push {
 	 #
 	 # @since 5/5/16
 	 # @since 11/28/16 Deprecated because p could mean either push or pull and it gets confusing, use push() and pull() instead.
+	 # @since 11/29/16 Push it! Push it!
 	 ##
 	function p {
-		echo "[Deprecated] p could mean either push or pull and it gets confusing, use push() and pull() instead."
+		push
 	}
 
 ###
