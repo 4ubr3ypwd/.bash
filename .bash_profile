@@ -34,6 +34,27 @@ source $( echo $(which vv)-completions)
  ##
 
 ###
+ # Commit for pre-processing chores.
+ #
+ # E.g.: commit-chores
+ #
+ # This make it easy to do this common commit message,
+ # make sure and stage your files first!
+ #
+ # @since  12/1/16
+ ##
+function commit-chores {
+	git commit -m "Pre-processing Chores. $1"
+}
+
+	###
+	 #
+	 ##
+	function chores() {
+		commit-chores "$1"
+	}
+
+###
  # Create a WDS Site.
  #
  # E.g.: new-wds-site sitename.dev git@webdevstudios.git.beanstalkapp.com:/webdevstudios/youth-entrepreneurs.git
